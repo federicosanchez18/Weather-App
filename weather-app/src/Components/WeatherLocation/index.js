@@ -7,12 +7,7 @@ import './styles.css' ;
 
 
 
-const data = {
-    temperature : 5,
-    //weatherState : SUN,
-    humidity : 10 ,
-    wind : '10 m/s '
-};
+
 
 class WeatherLocaltion  extends Component {
     
@@ -20,7 +15,7 @@ class WeatherLocaltion  extends Component {
         super();
         this.state = {
             city : "Brazil",
-            data : data,
+            data : null,
         }
     }
 
@@ -48,8 +43,9 @@ class WeatherLocaltion  extends Component {
         return (
             <div className='weatherLocationCont'>
             <Location city={city}></Location>
-            <WeatherData data={data}></WeatherData>
-            <button onClick = {this.handleUpdateClick}  >Actulizar</button>
+            {data ? 
+                <WeatherData data={data}></WeatherData> :
+                "Cargando ..." }
             </div>
         );
     };
